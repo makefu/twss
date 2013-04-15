@@ -11,7 +11,8 @@ def twss(sentence,vocabList,model):
     responses = ['Whatever ...','Okay','Yawn','What makes you think I care?','Yada yada','Uhuh','Yeah, yeah','figures',"I'm hungry",'give me a break','so ...']
     x  = processSentence(sentence, vocabList)
     #print [x]
-    p_label, p_acc, p_val = svm_predict([1], [x], model, '-b 1 -q')
+    p_label, p_acc, p_val = svm_predict([1], [x], model, '-b 1')
+    #p_label, p_acc, p_val = svm_predict([1], [x], model, '-q')
     print p_label, p_acc, p_val
     if p_label[0] == 1:
         return "That's what she said!\n"
@@ -20,7 +21,7 @@ def twss(sentence,vocabList,model):
 
 def twss_lite(sentence,vocabList,model):
     x = processSentence(sentence, vocabList)
-    p_label, p_acc, p_val = svm_predict([1], [x], model, '-b 1 -q')
+    p_label, p_acc, p_val = svm_predict([1], [x], model, '-b 1')
     return p_label[0]
 
 
